@@ -1,8 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #F7F1E8;
   color: #24303C;
+  overflow-x: hidden;
 }
 
 a {
@@ -14,6 +19,7 @@ a {
   background-color: #24303C;
   color: white;
   padding: 10px;
+  position: relative;
 }
 
 .nav-wrap {
@@ -35,6 +41,8 @@ a {
   list-style: none;
   display: flex;
   gap: 15px;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links a {
@@ -48,6 +56,11 @@ a {
 
 .nav-toggle {
   display: none;
+  background: none;
+  border: 1px solid white;
+  color: white;
+  padding: 6px 10px;
+  font-size: 16px;
 }
 
 /* general layout */
@@ -63,6 +76,10 @@ a {
 
 h1, h2, h3 {
   color: #24303C;
+}
+
+h1 {
+  font-size: 28px;
 }
 
 .divider {
@@ -143,7 +160,7 @@ h1, h2, h3 {
   color: white;
   padding: 10px;
   text-align: center;
-  flex: 1;
+  flex: 1 1 140px;
 }
 
 /* team */
@@ -151,6 +168,7 @@ h1, h2, h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
+  justify-content: center;
 }
 
 .team-card {
@@ -158,7 +176,8 @@ h1, h2, h3 {
   border: 1px solid #ccc;
   padding: 15px;
   text-align: center;
-  width: 200px;
+  flex: 1 1 160px;
+  max-width: 200px;
 }
 
 .avatar {
@@ -180,6 +199,7 @@ h1, h2, h3 {
   height: 80px;
   border-radius: 50%;
   margin: 0 auto 10px auto;
+  object-fit: cover;
 }
 
 .team-role {
@@ -217,6 +237,7 @@ h1, h2, h3 {
   border: 1px solid #ccc;
   padding: 10px;
   margin-bottom: 10px;
+  word-wrap: break-word;
 }
 
 .ref-num {
@@ -248,7 +269,45 @@ h1, h2, h3 {
 
 /* mobile */
 @media (max-width: 700px) {
+  .nav-toggle {
+    display: inline-block;
+  }
+
   .nav-links {
+    display: none;
     flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #24303C;
+    padding: 10px 15px;
+    gap: 10px;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .grid--3 > *,
+  .grid--2 > * {
+    flex: 1 1 100%;
+  }
+
+  .stat-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .team-card {
+    flex: 1 1 45%;
+  }
+
+  .doc-embed iframe {
+    height: 350px;
   }
 }
